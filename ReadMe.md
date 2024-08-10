@@ -12,10 +12,11 @@ Load `file.yaml` with YAMLScript:
 ```yaml
 !yamlscript/v0/
 
+# Get data from external sources:
 =>:
   names-url =:
-    ("https://raw.githubusercontent.com/dominictarr/" +
-     "random-name/master/first-names.json")
+    "https://raw.githubusercontent.com/dominictarr/" +
+            "random-name/master/first-names.json"
 
   name-list =: &first-names json/load(curl(names-url))
 
@@ -91,7 +92,7 @@ $ ys --compile file.ys
 In `go.mod`:
 
 ```go
-require github.com/yaml/yamlscript-go v0.1.69
+require github.com/yaml/yamlscript-go v0.1.70
 ```
 
 File `prog.go`:
@@ -121,7 +122,7 @@ func main() {
 You can install this module like any other Go module:
 
 ```bash
-$ go get github.com/yaml/yamlscript-go@v0.1.69
+$ go get github.com/yaml/yamlscript-go@v0.1.70
 ```
 
 but you will need to have a system install of `libyamlscript.so`.
