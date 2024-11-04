@@ -13,12 +13,11 @@ Load `file.yaml` with YAMLScript:
 !yamlscript/v0/
 
 # Get data from external sources:
-=>:
-  names-url =:
-    "https://raw.githubusercontent.com/dominictarr/" +
-            "random-name/master/first-names.json"
+names-url =:
+  "https://raw.githubusercontent.com/dominictarr/\
+   random-name/master/first-names.json"
 
-  name-list =: &first-names json/load(curl(names-url))
+name-list =: &first-names json/load(curl(names-url))
 
 # Data object with literal keys and generated values:
 name:: rand-nth(*first-names)
@@ -75,15 +74,15 @@ CLI binary `ys` to run:
 
 ```text
 $ ys --compile file.ys
-(def names-url
-  (+_ "https://raw.githubusercontent.com/dominictarr/"
-      "random-name/master/first-names.json"))
-(def name-list (_& 'first-names (json/load (curl names-url))))
-{"age" (_& 'num (*_ 2 3 7)),
- "aka" (_-> name-list (list rand-nth)),
- "color" (_& 'hue (_-> (qw red green blue yellow) (list shuffle) (list first))),
- "name" (rand-nth (_** 'first-names)),
- "title" (str (_** 'num) " shades of " (_** 'hue) ".")}
+(let
+ [names-url "https://raw.githubusercontent.com/dominictarr/random-name/master/first-names.json"
+  name-list (_& 'first-names (json/load (curl names-url)))]
+ (%
+  "name" (rand-nth (_** 'first-names))
+  "aka" (rand-nth name-list)
+  "age" (_& 'num (mul+ 2 3 7))
+  "color" (_& 'hue (first (shuffle (qw red green blue yellow))))
+  "title" (str (_** 'num) " shades of " (_** 'hue) ".")))
 ```
 
 
@@ -92,7 +91,7 @@ $ ys --compile file.ys
 In `go.mod`:
 
 ```go
-require github.com/yaml/yamlscript-go v0.1.81
+require github.com/yaml/yamlscript-go v0.1.82
 ```
 
 File `prog.go`:
@@ -122,7 +121,7 @@ func main() {
 You can install this module like any other Go module:
 
 ```bash
-$ go get github.com/yaml/yamlscript-go@v0.1.81
+$ go get github.com/yaml/yamlscript-go@v0.1.82
 ```
 
 but you will need to have a system install of `libyamlscript.so`.
