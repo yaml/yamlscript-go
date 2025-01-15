@@ -10,7 +10,7 @@ Add Logic to Your YAML Files
 
 Load `file.yaml` with YAMLScript:
 ```yaml
-!yamlscript/v0/
+!yamlscript/v0:
 
 # Get data from external sources:
 names-url =:
@@ -91,7 +91,7 @@ $ ys --compile file.ys
 In `go.mod`:
 
 ```go
-require github.com/yaml/yamlscript-go v0.1.87
+require github.com/yaml/yamlscript-go v0.1.88
 ```
 
 File `prog.go`:
@@ -121,7 +121,7 @@ func main() {
 You can install this module like any other Go module:
 
 ```bash
-$ go get github.com/yaml/yamlscript-go@v0.1.87
+$ go get github.com/yaml/yamlscript-go@v0.1.88
 ```
 
 but you will need to have a system install of `libyamlscript.so`.
@@ -179,7 +179,7 @@ Please open an issue on this repository or chat with us directly at
 
 ## License & Copyright
 
-Copyright 2022-2024 Ingy döt Net <ingy@ingy.net>
+Copyright 2022-2025 Ingy döt Net <ingy@ingy.net>
 
 This project is licensed under the terms of the `MIT` license.
 See [LICENSE](https://github.com/yaml/yamlscript/blob/main/License) for
