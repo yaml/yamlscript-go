@@ -20,7 +20,7 @@ names-url =:
 name-list =: names-url:curl:json/load
 
 # Data object with literal keys and generated values:
-name:: iname-list:shuffle:first
+name:: name-list:shuffle:first
 aka:: name-list:rand-nth
 age:: &num 2 * 3 * 7
 color:: &hue
@@ -63,7 +63,7 @@ This makes YS a complete functional programming language right out of the box.
 
 Even though YS compiles to Clojure, and Clojure compiles to Java, there is no
 dependency on Java or the JVM.
-YS is compiled to a native shared library (`libyamlscript.so`) that can be used
+YS is compiled to a native shared library (`libys.so`) that can be used
 by any programming language that can load shared libraries.
 
 To see the Clojure code that YS compiles to, you can use the YS
@@ -87,7 +87,7 @@ $ ys --compile file.ys
 In `go.mod`:
 
 ```go
-require github.com/yaml/yamlscript-go v0.1.97
+require github.com/yaml/yamlscript-go v0.2.1
 ```
 
 File `prog.go`:
@@ -117,10 +117,10 @@ func main() {
 You can install this module like any other Go module:
 
 ```bash
-$ go get github.com/yaml/yamlscript-go@v0.1.97
+$ go get github.com/yaml/yamlscript-go@v0.2.1
 ```
 
-but you will need to have a system install of `libyamlscript.so`.
+but you will need to have a system install of `libys.so`.
 
 One simple way to do that is with:
 
@@ -129,7 +129,7 @@ $ curl https://yamlscript.org/install | bash
 ```
 
 > Note: The above command will install the latest version of the YAMLScript
-command line utility, `ys`, and the shared library, `libyamlscript.so`, into
+command line utility, `ys`, and the shared library, `libys.so`, into
 `~/local/bin` and `~/.local/lib` respectively.
 
 See <https://yamlscript.org/doc/install/> for more info.
