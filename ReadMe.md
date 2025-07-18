@@ -9,13 +9,13 @@ Add Logic to Your YAML Files
 ## Synopsis
 
 Load `file.yaml` with YS:
+
 ```yaml
 !YS-v0:
 
 # Get data from external sources:
 names-url =:
-  "https://raw.githubusercontent.com/dominictarr/\
-   random-name/master/first-names.json"
+  'github:dominictarr/random-name/first-names.json'
 
 name-list =: names-url:curl:json/load
 
@@ -87,7 +87,7 @@ $ ys --compile file.ys
 In `go.mod`:
 
 ```go
-require github.com/yaml/yamlscript-go v0.2.1
+require github.com/yaml/yamlscript-go v0.2.2
 ```
 
 File `prog.go`:
@@ -117,7 +117,7 @@ func main() {
 You can install this module like any other Go module:
 
 ```bash
-$ go get github.com/yaml/yamlscript-go@v0.2.1
+$ go get github.com/yaml/yamlscript-go@v0.2.2
 ```
 
 but you will need to have a system install of `libys.so`.
