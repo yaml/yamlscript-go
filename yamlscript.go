@@ -1,11 +1,10 @@
 package yamlscript
 
-// #cgo !windows LDFLAGS: -lys.0.2.32
-// #cgo windows LDFLAGS: -lys
+// #cgo LDFLAGS: -lys
 // #ifdef _WIN32
 // #include <libys.h>
 // #else
-// #include <libys.0.2.32.h>
+// #include <libys.0.3.0.h>
 // #endif
 // #include <stdlib.h>
 import "C"
@@ -48,7 +47,7 @@ func Load(input string) (data any, err error) {
 
 	// Call 'load_ys_to_json' function in libys shared library:
 	// Use the newly attached thread
-	data_json := C.GoString(C.load_ys_to_json((C.longlong)(uintptr(unsafe.Pointer(thread))), cs))
+	data_json := C.GoString(C.load_ys_to_json(thread, cs))
 	C.free(unsafe.Pointer(cs))
 
 	// Decode the JSON response:
